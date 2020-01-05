@@ -32,6 +32,13 @@ public class RatingMetadataResource {
         return Response.status(Response.Status.OK).entity(ratingMetadata).build();
     }
 
+    @GET
+    @Path("count")
+    public Response getRatingsCount(){
+        //TODO make service that will count depending on text id param
+        return Response.ok(10).build();
+    }
+
     @POST
     public Response createRatingMetadata(RatingMetadata ratingMetadata) {
 

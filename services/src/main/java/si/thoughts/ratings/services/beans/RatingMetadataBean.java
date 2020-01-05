@@ -1,25 +1,20 @@
 package si.thoughts.ratings.services.beans;
 
-import com.kumuluz.ee.discovery.annotations.DiscoverService;
 import com.kumuluz.ee.rest.beans.QueryParameters;
 import com.kumuluz.ee.rest.utils.JPAUtils;
 import si.thoughts.ratings.lib.RatingMetadata;
 import si.thoughts.ratings.models.converters.RatingMetadataConverter;
 import si.thoughts.ratings.models.entities.RatingMetadataEntity;
-import si.thoughts.ratings.services.config.IntegrationProperties;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
-import javax.ws.rs.NotFoundException;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.core.UriInfo;
 import java.util.List;
-import java.util.Optional;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
@@ -33,13 +28,6 @@ public class RatingMetadataBean {
     private EntityManager em;
 
     private Client httpClient;
-
-    @Inject
-    @DiscoverService("comments-service")
-    private Optional<String> baseUrl;
-
-    @Inject
-    private IntegrationProperties integrationProperties;
 
     @PostConstruct
     private void init() {
