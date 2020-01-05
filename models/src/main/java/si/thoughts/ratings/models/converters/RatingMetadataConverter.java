@@ -8,7 +8,8 @@ public class RatingMetadataConverter {
     public static RatingMetadata toDto(RatingMetadataEntity entity) {
 
         RatingMetadata dto = new RatingMetadata();
-        dto.setTextId(entity.getId());
+        dto.setId(entity.getId());
+        dto.setTextId(entity.getTextId());
         dto.setCreated(entity.getCreated());
         dto.setRating(entity.getRating());
         return dto;
@@ -18,10 +19,9 @@ public class RatingMetadataConverter {
 
         RatingMetadataEntity entity = new RatingMetadataEntity();
         entity.setCreated(dto.getCreated());
-        entity.setId(dto.getTextId());
+        entity.setTextId(dto.getTextId());
         entity.setRating(dto.getRating());
         return entity;
-
     }
 
 }

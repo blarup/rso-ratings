@@ -12,8 +12,12 @@ import java.time.Instant;
         })
 public class RatingMetadataEntity {
 
-    @Column(name = "textId")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @Column(name = "textId")
+    private Integer textId;
 
     @Column(name = "rating")
     private Integer rating;
@@ -43,5 +47,13 @@ public class RatingMetadataEntity {
 
     public void setCreated(Instant created) {
         this.created = created;
+    }
+
+    public Integer getTextId(){
+        return textId;
+    }
+
+    public void setTextId(Integer textId){
+        this.textId = textId;
     }
 }

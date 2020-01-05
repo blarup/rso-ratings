@@ -41,7 +41,7 @@ public class RatingMetadataResource {
             ratingMetadata = ratingMetadataBean.createRatingMetadata(ratingMetadata);
         }
 
-        return Response.status(Response.Status.CONFLICT).entity(ratingMetadata).build();
+        return Response.status(Response.Status.OK).entity(ratingMetadata).build();
 
     }
 }
