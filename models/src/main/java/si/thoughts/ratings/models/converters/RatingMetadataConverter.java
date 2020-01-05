@@ -10,7 +10,7 @@ public class RatingMetadataConverter {
         RatingMetadata dto = new RatingMetadata();
         dto.setTextId(entity.getId());
         dto.setCreated(entity.getCreated());
-        dto.setTRating(entity.getRating());
+        dto.setRating(entity.getRating());
         return dto;
     }
 

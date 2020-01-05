@@ -12,7 +12,7 @@ import java.time.Instant;
         })
 public class RatingMetadataEntity {
 
-    @Id
+    @Column(name = "textId")
     private Integer id;
 
     @Column(name = "rating")

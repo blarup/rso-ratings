@@ -12,7 +12,7 @@ public class RatingMetadata {
         return rating;
     }
 
-    public void setTRating(Integer rating) {
+    public void setRating(Integer rating) {
         this.rating = rating;
     }
 
