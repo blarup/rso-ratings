@@ -38,7 +38,7 @@ public class RatingsResource {
     @GET
     @Path("info")
     public Response getInfo(){
-        return Response.ok("Responding with ok message.").build();
+        return Response.ok(cfg.getDbUrl() + " "+ cfg.getDbUser() + " " + cfg.getDbPassword()).build();
     }
 
     @GET
