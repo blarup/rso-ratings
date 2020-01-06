@@ -35,25 +35,44 @@ public class RatingsResource {
         return Response.ok().build();
     }
 
-    @GET
-    @Path("info")
-    public Response getInfo(){
-        return Response.ok(cfg.getDbUrl() + " "+ cfg.getDbUser() + " " + cfg.getDbPassword()).build();
-    }
-
-    @GET
-    @Path("testconnection")
-    public Response getTestConnection(){
+    @DELETE
+    @Path("delete_ratings")
+    public Response deleteRatings(@QueryParam("textId") int textId){
         try(
                 Connection con = DriverManager.getConnection(cfg.getDbUrl(),cfg.getDbUser(),cfg.getDbPassword());
+                Statement stmt = con.createStatement();
                 ){
-            System.out.println("connection successful");
+            stmt.executeUpdate("DELETE FROM ratings where textId = " + textId);
         }catch(SQLException e){
             System.err.println(e);
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
 
-        return Response.ok("Connection was successful").build();
+        return Response.noContent().build();
+    }
+
+    @GET
+    @Path("average_rating")
+    public Response getAverageRating(@QueryParam("textId") int textId){
+        double result = Double.NaN;
+        try(
+                Connection con = DriverManager.getConnection(cfg.getDbUrl(),cfg.getDbUser(),cfg.getDbPassword());
+                Statement stmt = con.createStatement();
+                ResultSet rs = stmt.executeQuery("SELECT avg(rating) FROM rating_metadata" +
+                        " where textId = " + textId);
+                ){
+            while(rs.next()){
+                double value = rs.getDouble(1);
+                if(!rs.wasNull()){
+                    result = value;
+                }
+            }
+        }catch(SQLException e){
+            System.err.println(e);
+            return Response.status(Response.Status.BAD_REQUEST).build();
+        }
+
+        return Response.ok(result).build();
     }
 
     @GET
