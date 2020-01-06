@@ -9,7 +9,7 @@ kumuluzee:
       port: 8081
   config:
     etcd:
-      hosts: http://192.168.29.109:2379
+      hosts: http://etcd:2379
   health:
     checks:
       etcd-health-check:
