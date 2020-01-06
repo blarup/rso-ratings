@@ -42,6 +42,21 @@ public class RatingsResource {
     }
 
     @GET
+    @Path("testconnection")
+    public Response getTestConnection(){
+        try(
+                Connection con = DriverManager.getConnection(cfg.getDbUrl(),cfg.getDbUser(),cfg.getDbPassword());
+                ){
+            System.out.println("connection successful");
+        }catch(SQLException e){
+            System.err.println(e);
+            return Response.status(Response.Status.BAD_REQUEST).build();
+        }
+
+        return Response.ok("Connection was successful").build();
+    }
+
+    @GET
     public Response getRatings(){
         List<Rating> ratings = new LinkedList<Rating>();
 
