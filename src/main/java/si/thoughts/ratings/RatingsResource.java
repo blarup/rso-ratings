@@ -36,6 +36,12 @@ public class RatingsResource {
     }
 
     @GET
+    @Path("info")
+    public Response getInfo(){
+        return Response.ok("Responding with ok message.").build();
+    }
+
+    @GET
     public Response getRatings(){
         List<Rating> ratings = new LinkedList<Rating>();
 
