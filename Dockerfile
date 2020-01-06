@@ -4,8 +4,8 @@ RUN mkdir /app
 
 WORKDIR /app
 
-ADD ./api/target/ratings-api-1.0.0-SNAPSHOT.jar /app
+ADD ./target/ratings-1.0.0-SNAPSHOT.jar /app
 
 EXPOSE 8080
 
-CMD ["java", "-jar", "ratings-api-1.0.0-SNAPSHOT.jar"]
+CMD ["java", "-jar", "ratings-1.0.0-SNAPSHOT.jar"]
