@@ -30,6 +30,6 @@ kumuluzee:
                       </Loggers>
                     </Configuration>'
 configuration-properties:
-  db-url: jdbc:mysql://10.87.192.3:3306/ratings
+  db-url: jdbc:mysql://34.68.211.18:3306/ratings
   db-user: root
-  db-password: 8MC17rIF68NyyoBC
+  db-password: pGaM2D1vmNdHcGKr
